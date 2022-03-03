@@ -18,9 +18,7 @@ export class LoaderComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.loaderStatus$.subscribe((response: Loader) => {
-      if( this.id === response.id && response.status ){
-        this.show = response.status
-      }else if (this.id === response.id  && !response.status ){
+      if( this.id === response.id ){
         this.show = response.status
       }
       // this.show = this.id === response.id && response.status;
