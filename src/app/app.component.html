@@ -3,13 +3,9 @@
     <div class="flex-item" #leftElement>
       <h2>Flex container-1</h2>
       <button (click)="showLoader('first')">Show first loader</button>
+      <app-loader [id]="'first'"></app-loader>
+      <h1>First container</h1>
       <button (click)="hideLoader('first')">Hide first loader</button>
-      <div class="loaders">
-        <div class="first">
-          <app-loader [id]="'first'"></app-loader>
-          <h1>First container</h1>
-        </div>
-      </div>
     </div>
     <div
       class="grabber stuff"
@@ -22,13 +18,9 @@
     <div class="flex-item" #rightElement>
       <h2>Flex container-2</h2>
       <button (click)="showLoader('second')">Show second loader</button>
+      <app-loader [id]="'second'"></app-loader>
+      <h1>second container</h1>
       <button (click)="hideLoader('second')">Hide second loader</button>
-      <div class="loaders">
-        <div class="second">
-          <app-loader [id]="'second'"></app-loader>
-          <h1>second container</h1>
-        </div>
-      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 .preloader {
   z-index: 2;
-  background-color: #fff;
+  /* background-color: #fff; */
   top: 0;
   left: 0;
   width: 100%;
@@ -13,9 +13,9 @@
   position: absolute;
 } */
 
-/* .preloader.secondary {
+.preloader.secondary {
   position: relative;
-} */
+}
 
 .preloader .loader {
   display: block;
