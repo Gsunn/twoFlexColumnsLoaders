@@ -14,29 +14,52 @@ export class ResizeDirective {
   @HostListener('mousedown') onMouseDown() {
     this.grabber = true;
     this.el.nativeElement.classList.add('side-panel');
-    document.body.style.cursor = 'e-resize';
+    this.width = window.innerWidth;
+
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
   }
 
   @HostListener('window:mouseup') onMouseUp() {
     this.grabber = false;
     this.el.nativeElement.classList.remove('side-panel');
     document.body.style.cursor = 'default';
+    document.body.style.userSelect = 'auto';
   }
 
+  // @HostListener('window:mousemove', ['$event']) onMouseMove(event: MouseEvent) {
+  //   if (this.grabber) {
+  //     event.preventDefault();
+  //     if (event.movementX > 0) {
+  //       this.rightElement.style.flex = `0 5 ${
+  //         (this.width || window.screen.availWidth) - event.clientX + 100
+  //       }px`;
+  //       this.leftElement.style.flex = `1 5 ${event.clientX - 16}px`;
+  //     } else {
+  //       this.leftElement.style.flex = `0 5 ${event.clientX - 16}px`;
+  //       this.rightElement.style.flex = `1 5 ${
+  //         (this.width || window.screen.availWidth) - event.clientX + 100
+  //       }px`;
+  //     }
+  //   }
+  // }
+
   @HostListener('window:mousemove', ['$event']) onMouseMove(event: MouseEvent) {
+
     if (this.grabber) {
+
       event.preventDefault();
+
       if (event.movementX > 0) {
-        this.rightElement.style.flex = `0 5 ${
-          (this.width || window.screen.availWidth) - event.clientX + 100
-        }px`;
-        this.leftElement.style.flex = `1 5 ${event.clientX - 16}px`;
+        console.log('right')
+        this.rightElement.style.flex = `0 1 ${ ( this.width - event.clientX )}px`;
+        this.leftElement.style.flex = '1 1 auto'
       } else {
-        this.leftElement.style.flex = `0 5 ${event.clientX - 16}px`;
-        this.rightElement.style.flex = `1 5 ${
-          (this.width || window.screen.availWidth) - event.clientX + 100
-        }px`;
+        console.log('left')
+        this.leftElement.style.flex = `0 1 ${ ( event.clientX )}px`;
+        this.rightElement.style.flex = '1 1 auto'
       }
-    }
+    }    
   }
+
 }
